@@ -23,5 +23,5 @@ def homoglyph_conversion(dataset, homo_file_name):
     homoglyph_map = str.maketrans(homoglyph_dict)
 
     converted_text_list = [x.translate(homoglyph_map) for x in list(dataset)]
-    result_df = pd.DataFrame(converted_text_list, columns=['homoglyph_text'])
+    result_df = pd.Series(converted_text_list, name='homoglyph_text')
     return result_df
