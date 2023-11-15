@@ -6,6 +6,6 @@ Working in progress:
 
 Homoglyph conversion - done
 
-Pass to detectors - in progress
+Pass to detectors - Deepfake done, next: RADAR
 
-Evaluation - not started
+Evaluation - in progress
