@@ -18,7 +18,7 @@ def generate_original_dataset(file_name, origin_column, text_column):
 
 # converting input data string to homoglyphs
 def homoglyph_conversion(dataset, homo_file_name):
-    with open('data/homoglyphs.json') as homo:
+    with open(homo_file_name) as homo:
         homoglyph_dict = json.load(homo)
     homoglyph_map = str.maketrans(homoglyph_dict)
 
