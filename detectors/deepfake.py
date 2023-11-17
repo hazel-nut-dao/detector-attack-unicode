@@ -6,7 +6,7 @@ from transformers import AutoModelForSequenceClassification,AutoTokenizer
 from .DeepfakeTextDetect import deployment
 
 # init
-device = 'cpu' # use 'cuda:0' if GPU is available
+device = 'cuda:0' # use 'cuda:0' if GPU is available
 model_dir = "nealcly/detection-longformer"
 tokenizer = AutoTokenizer.from_pretrained(model_dir)
 model = AutoModelForSequenceClassification.from_pretrained(model_dir).to(device)

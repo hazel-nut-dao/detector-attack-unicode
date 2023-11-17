@@ -1,6 +1,5 @@
 import pandas as pd
 from generate_datasets import *
-#from glob import glob
 import json
 import os
 
@@ -8,7 +7,9 @@ data_file_name = 'data/deepfake_test.csv'
 source_target = 'src'
 label_target = 'label'
 folder = 'result'
-text_count = 200
+text_count = 350
+
+print('With sample size', text_count, ':')
 
 # Obtaining the detection result stated in the paper
 '''
@@ -18,12 +19,11 @@ Text, Label (0 for machine-generated and 1 for human-written) and
 Index (indexes in the original data source, used restore alignment after filtering).
 '''
 original_output = generate_original_dataset(data_file_name, source_target, label_target)
-false_detection_original = sum(original_output.head(text_count))
-print('Number of texts mistaken as human-written in the original study =', false_detection_original)
+#false_detection_original = sum(original_output.head(text_count))
+#print('Number of texts mistaken as human-written in the original study =', false_detection_original)
 
 # Obtaining the detection result of attacked text
 results = []
-#result_file_list =  [f for f in glob("result/*.json")]
 result_file_list = [filename for filename in os.listdir(folder) if filename.startswith('deepfake_original')]
 for file in result_file_list:
     in_file = open('result/'+file, "r")
@@ -37,7 +37,6 @@ print('Number of texts mistaken as human-written in the original dataset =', fal
 
 # Obtaining the detection result of attacked text
 results = []
-#result_file_list =  [f for f in glob("result/*.json")]
 result_file_list = [filename for filename in os.listdir(folder) if filename.startswith('deepfake_homoglyph')]
 for file in result_file_list:
     in_file = open('result/'+file, "r")

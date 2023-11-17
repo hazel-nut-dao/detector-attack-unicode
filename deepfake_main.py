@@ -1,18 +1,19 @@
 from generate_datasets import *
 from detectors import deepfake
 import os
+import json
 
 # homoglyphs used for conversion
 homoglyph_file_name = 'data/homoglyphs.json'
 
-# target dataframe
+# target dataframe for extracting text
 data_file_name = 'data/deepfake_test.csv'
 source_target = 'src'
 text_target = 'text'
 
 # e.g START_INDEX=0, END_INDEX=2 -> process index 0, 1
-START_INDEX = 100
-END_INDEX = 150
+START_INDEX = 500
+END_INDEX = 600
 
 # generate homoglyphs-replaced data from input data
 original_dataset = generate_original_dataset(data_file_name, source_target, text_target)
