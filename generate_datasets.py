@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+from random import random
 
 # finding the data labelled as machine-generated
 def if_machine(name):
@@ -23,5 +24,23 @@ def homoglyph_conversion(dataset, homo_file_name):
     homoglyph_map = str.maketrans(homoglyph_dict)
 
     converted_text_list = [x.translate(homoglyph_map) for x in list(dataset)]
+    result_df = pd.Series(converted_text_list, name='homoglyph_text')
+    return result_df
+
+def homoglyph_conversion_threshold(dataset, homo_file_name, threshold):
+    with open(homo_file_name) as homo:
+        homoglyph_dict = json.load(homo)
+    homoglyph_map = str.maketrans(homoglyph_dict)
+    converted_text_list = []
+    for text in list(dataset):
+        text_h = text.translate(homoglyph_map)
+        result_text = str()
+        for i in range(len(text)):
+            rand = random()
+            if rand <= threshold:
+                result_text = result_text + text_h[i]
+            else:
+                result_text = result_text + text[i]
+        converted_text_list.append(result_text)
     result_df = pd.Series(converted_text_list, name='homoglyph_text')
     return result_df
