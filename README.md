@@ -10,4 +10,4 @@ Homoglyph conversion - Done
 
 Conversion with threshold - Done
 
-Conversion of selected characters - In progress
+Conversion of selected characters - Done
